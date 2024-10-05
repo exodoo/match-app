@@ -16,17 +16,18 @@ export class Auth {
     }
     
     async signUp(name: string) {
-        const response = await this.apiClient.post<{ token: string }>('/auth/login', {
-            name,
+        const response = await this.apiClient.post<{ id: string }>('/api/games/tinder/gamers', {
+            name: name,
+            username: name
         });
-        localStorage.setItem('token', response.token);
+        localStorage.setItem('id', response.id);
     }
     
     async logout() {
-        localStorage.removeItem('token');
+        localStorage.removeItem('id');
     }
     
     async isLoggedIn() {
-        return !!localStorage.getItem('token');
+        return !!localStorage.getItem('id');
     }
 }

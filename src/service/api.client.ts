@@ -25,10 +25,10 @@ export class ApiClientService {
     skipAuth?: boolean;
   }) {
     try {
-      const token = localStorage.getItem('token');
+      const id = localStorage.getItem('id');
 
-      if (!token && !skipAuth) {
-        throw new Error('No token available');
+      if (!id && !skipAuth) {
+        throw new Error('No id available');
       }
 
       const response = await axios.request<T>({
@@ -36,7 +36,7 @@ export class ApiClientService {
         headers: skipAuth
           ? {}
           : {
-              Authorization: `Bearer ${token}`,
+              Authorization: `Bearer ${id}`,
             },
         method,
         url: resource,
@@ -47,7 +47,7 @@ export class ApiClientService {
     } catch (e: any) {
       //TODO add error handling
       if (e?.response?.status === 401 && !skipAuth) {
-        localStorage.removeItem('token');
+        localStorage.removeItem('id');
       }
       throw e;
     }
@@ -64,7 +64,7 @@ export class ApiClientService {
   put<T>(resource: string, body: unknown, skipAuth = false) {
     return this.request<T>({ method: 'PUT', resource, body, skipAuth });
   }
-  
+
   patch<T>(resource: string, body: unknown, skipAuth = false) {
     return this.request<T>({ method: 'PUT', resource, body, skipAuth });
   }
