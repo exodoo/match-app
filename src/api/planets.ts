@@ -16,7 +16,12 @@ export class Planets {
     }
     
     async getPlanets() {
-        const response = await this.apiClient.post<{ id: string }>('/planets/', {});
+        const response = await this.apiClient.get('/exoplanets/', {}, true);
+        return response;
+    }
+
+    async getPlanet(id: string) {
+        const response = await this.apiClient.get(`/exoplanets/${id}`, {}, true);
         return response;
     }
 }
