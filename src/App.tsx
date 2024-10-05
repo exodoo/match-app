@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import Home from './pages/Home';
-import About from './pages/About';
+import { SignUp, PlanetCard } from './pages';
+
 import './App.css';
 
 function App() {
@@ -15,8 +15,8 @@ function App() {
       </nav>
 
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/" element={<PlanetCard />} />
+        <Route path="/about" element={<SignUp />} />
       </Routes>
     </Router>
   );
