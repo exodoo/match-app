@@ -16,10 +16,10 @@ export class Auth {
     }
     
     async signUp(name: string) {
-        const response = await this.apiClient.post<{ id: string }>('/api/games/tinder/gamers', {
+        const response = await this.apiClient.post<{ id: string }>('/games/tinder/gamers', {
             name: name,
             username: name
-        });
+        }, true);
         localStorage.setItem('id', response.id);
     }
     

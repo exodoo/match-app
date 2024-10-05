@@ -6,17 +6,16 @@ import './App.css';
 function App() {
   return (
     <Router>
-      {/* <nav>
+      { 
+        <nav>
         <ul>
-          <Link to="/">Home</Link>
-          <br />
-          <Link to="/about">About</Link>
+          <Link to="/signup">Sign Up</Link>
         </ul>
-      </nav> */}
+      </nav>}
 
       <Routes>
         <Route path="/" element={<PlanetCard />} />
-        <Route path="/about" element={<SignUp />} />
+        <Route path="/signup" element={<SignUp />} />
       </Routes>
     </Router>
   );

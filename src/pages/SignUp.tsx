@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { TextField, Button, Box } from '@mui/material';
+import { Auth } from '../api';
 
 import Logo from '../assets/logo.svg';
 
@@ -11,7 +12,7 @@ const SignUp: React.FC = () => {
   };
 
   const handleStart = () => {
-    // TODO: insert service logic here
+    Auth.getInstance().signUp(nickname);
   };
 
   return (
