@@ -64,6 +64,7 @@ export class ApiClientService {
   put<T>(resource: string, body: unknown, skipAuth = false) {
     return this.request<T>({ method: 'PUT', resource, body, skipAuth });
   }
+  
   patch<T>(resource: string, body: unknown, skipAuth = false) {
     return this.request<T>({ method: 'PUT', resource, body, skipAuth });
   }

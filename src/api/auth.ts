@@ -1,0 +1,32 @@
+import { ApiClientService } from "../service";
+
+export class Auth {
+    private static _instance: Auth;
+    private apiClient: ApiClientService;
+    
+    private constructor() {
+        this.apiClient = ApiClientService.getInstance();
+    }
+    
+    static getInstance() {
+        if (!Auth._instance) {
+        Auth._instance = new Auth();
+        }
+        return Auth._instance;
+    }
+    
+    async signUp(name: string) {
+        const response = await this.apiClient.post<{ token: string }>('/auth/login', {
+            name,
+        });
+        localStorage.setItem('token', response.token);
+    }
+    
+    async logout() {
+        localStorage.removeItem('token');
+    }
+    
+    async isLoggedIn() {
+        return !!localStorage.getItem('token');
+    }
+}
