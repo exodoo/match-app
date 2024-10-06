@@ -1,7 +1,14 @@
 .gamers {
     width: 100%;
     overflow: auto;
-    max-height: 50%;
+
+    overflow: hidden; /* Completely hides overflow */
+    overflow-y: scroll; /* Allows scrolling without showing the scrollbar */
+    scrollbar-width: none; /* For Firefox */
+}
+
+.gamers::-webkit-scrollbar { 
+    display: none; /* For Chrome, Safari, and newer versions of Edge */
 }
 
 .gamer-item {

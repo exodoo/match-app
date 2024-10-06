@@ -12,7 +12,7 @@ export const Avatar: React.FC<AvatarProps> = ({ userId, alt }) => {
 
     useEffect(() => {
         const userService = UserClientService.getInstance();
-        const avatarPath = userService.getAvatarById(userId);
+        const avatarPath = userService.getAvatarById(userId.toString());
         setAvatarSrc(avatarPath);
     }, [userId]);
 

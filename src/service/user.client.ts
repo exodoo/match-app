@@ -29,10 +29,11 @@ export class UserClientService {
     private hashString(id: string): number {
         let hash = 0;
         for (let i = 0; i < id.length; i++) {
-            hash = (hash << 5) - hash + id.charCodeAt(i);
+            const char = id.charCodeAt(i);
+            hash = ((hash << 5) - hash) + char;
             hash = hash & hash;
         }
-        return Math.abs(hash);
+        return hash;
     }
 
     getAvatarById(id: string): string {
