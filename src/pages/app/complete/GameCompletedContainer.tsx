@@ -63,7 +63,7 @@ const GameCompletedContainer: React.FC = () => {
 
   return (
     <div className="game-completed">
-      <Header />
+      <Header theme="dark" />
       {results.length < MAX_EXPLORERS ? (
         <div className="game-content-container">
           <div className="greetings-text">
@@ -86,8 +86,8 @@ const GameCompletedContainer: React.FC = () => {
 
       {results.length >= MAX_EXPLORERS ? (
         <div className="game-content-container">
-          <h4>Game completed!</h4>
           <div className="body-text">
+            <h4>Congratulations!</h4>
             You have matches with {MAX_EXPLORERS} other astronauts. Say “Hola”
             to your teammates-colonists:
           </div>
@@ -96,8 +96,8 @@ const GameCompletedContainer: React.FC = () => {
           {/* <h4>Destination:</h4>
                     <PlanetDetailedCard /> */}
 
-          <Button onClick={handleMatchAgain} variant="outlined" fullWidth>
-            Match again
+          <Button onClick={handleMatchAgain} variant="outlined">
+            Play again
           </Button>
         </div>
       ) : null}

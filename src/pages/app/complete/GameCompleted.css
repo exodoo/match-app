@@ -33,6 +33,7 @@
 }
 
 .body-text {
+    text-align: center;
     color: var(--primary-contrast, #fff);
     font-feature-settings:
         "liga" off,
@@ -45,6 +46,10 @@
     font-weight: 400;
     line-height: 150%; /* 1.5rem */
     letter-spacing: 0.00938rem;
+}
+
+.body-text > h4 {
+    margin-bottom: 16px;
 }
 
 .timer-container {
