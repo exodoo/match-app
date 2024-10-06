@@ -3,8 +3,6 @@ import { SignUp, PlanetCard } from './pages';
 
 import { Planets } from './api/planets';
 
-import './App.css';
-
 function App() {
   // Get planets
   const planets = Planets.getInstance();
