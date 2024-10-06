@@ -63,16 +63,17 @@ const GameCompletedContainer: React.FC = () => {
               </div>
             </div>
     
+            {results.length < 3 ? 
             <div className="timer-container">
               <h5>Time left:</h5>
-              {results.length < 3 ? <Timer duration={300000} /> : null}
-            </div>
+              <Timer duration={300000} />
+            </div>  
+            : null}
     
             <Spinner />
           </div>
           Game completed!
-          <Gamers list={[{ name: "Some Name" }]} />
-          {results.length < 3 ? <Gamers list={results}/> : null}
+          {results.length >= 3 ? <Gamers list={results}/> : null}
         </div>
       );
 };
