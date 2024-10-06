@@ -19,9 +19,15 @@
     align-self: stretch;
 }
 
-.content-container {
+.game-content-container {
     max-width: 500px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    flex: 1 0 0;
+    align-self: stretch;
 }
 
 .body-text {

@@ -56,7 +56,7 @@ const GameCompletedContainer: React.FC = () => {
         <div className="game-completed">
             <Header />
             {results.length < MAX_EXPLORERS ?
-                <div className="content-container">
+                <div className="game-content-container">
                     <div className="greetings-text">
                         <h4>Great!</h4>
                         <div className="body-text">
@@ -74,7 +74,7 @@ const GameCompletedContainer: React.FC = () => {
                 : null}
 
             {results.length >= MAX_EXPLORERS ?
-                <div className="content-container">
+                <div className="game-content-container">
                     <h4>Game completed!</h4>
                     <div className="body-text">
                         You have matches with {MAX_EXPLORERS} other astronauts.
