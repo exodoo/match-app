@@ -2,7 +2,13 @@ import React from 'react';
 
 import './PlanetView.css';
 
-export const PlanetView: React.FC = () => {
+type PlanetViewProps = {
+    planetTexture: string;
+    background?: string;
+    name?: string;
+};
+
+export const PlanetView: React.FC<PlanetViewProps> = ({ planetTexture, background, name }) => {
     return (
         <div>
             <div className="card">
