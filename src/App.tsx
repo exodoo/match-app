@@ -12,13 +12,6 @@ function App() {
 
   return (
     <Router>
-      { 
-        <nav>
-        <ul>
-          <Link to="/signup">Sign Up</Link>
-        </ul>
-      </nav>}
-
       <Routes>
         <Route path="/" element={<PlanetCard />} />
         <Route path="/signup" element={<SignUp />} />
