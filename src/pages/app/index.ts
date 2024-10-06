@@ -1,2 +1,3 @@
-export { default as PlanetsContainer } from './PlanetsContainer';
-export { GameCompleted } from './GameCompleted';
+export { default as PlanetsMatchingContainer } from './PlanetsMatchingContainer';
+export { default as PlanetDetailsContainer } from './PlanetDetailsContainer';
+export { default as GameCompletedContainer } from './GameCompletedContainer';

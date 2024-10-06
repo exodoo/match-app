@@ -3,11 +3,10 @@ import React from 'react';
 import { PlanetView } from '../../components/planet-view/PlanetView';
 
 type PlanetDetailedCardProps = {
-  planet: any;
-  onRate: (planet: unknown, rating: number) => void;
+  planet: unknown;
 };
 
-const PlanetDetailedCard: React.FC<PlanetDetailedCardProps> = ({ planet, onRate }) => {
+const PlanetDetailedCard: React.FC<PlanetDetailedCardProps> = ({ planet }) => {
   if (!planet) {
     return null;
   }
@@ -17,7 +16,6 @@ const PlanetDetailedCard: React.FC<PlanetDetailedCardProps> = ({ planet, onRate 
       <div className="card">
         {planet.name}
         <PlanetView planetTexture={planet.planet_texture} background={planet.background} />
-        <button onClick={() => onRate(planet, 1)}>1</button>
       </div>
     </div>
   );

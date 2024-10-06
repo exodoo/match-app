@@ -1,2 +1,2 @@
-export { PlanetsContainer, GameCompleted } from './app';
+export { PlanetsMatchingContainer, GameCompletedContainer } from './app';
 export { default as SignUp } from './signup/SignUp';

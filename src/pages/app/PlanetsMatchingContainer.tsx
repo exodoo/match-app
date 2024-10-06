@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
+import { Button } from '@mui/material';
 
 import { Auth, Planets } from '../../api';
+import { Header, TabBar, Spinner } from '../../components';
 import PlanetDetailedCard from './PlanetDetailedCard';
-import { Avatar } from '../../components/avatar/Avatar';
 
 const planetsService = Planets.getInstance();
 
-const PlanetsContainer: React.FC = () => {
+const PlanetsMatchingContainer: React.FC = () => {
     const [completed, setCompleted] = useState(false);
     const [planets, setPlanets] = useState<any[]>([]);
     const [selected, setSelected] = useState<unknown | null>(null);
@@ -43,7 +44,7 @@ const PlanetsContainer: React.FC = () => {
                 if (planets.length === 0 && planetsService.isAnyPlanetRated) {
                     return setCompleted(true);
                 }
-                
+
                 setPlanets(planets);
                 setSelected(planets[0]);
             })
@@ -57,13 +58,19 @@ const PlanetsContainer: React.FC = () => {
 
     return (
         <div>
+            <Header />
             <div className="card">
-                {loading && <p>Loading...</p>}
+                {loading && <Spinner />}
                 {completed && <Navigate to="/complete" replace />}
-                <PlanetDetailedCard planet={selected} onRate={handleRatePlanet} />
+                <div>
+                    <PlanetDetailedCard planet={selected} />
+                    <Button>Like</Button>
+                    <Button>Dislike</Button>
+                </div>
             </div>
+            <TabBar />
         </div>
     );
 };
 
-export default PlanetsContainer;
+export default PlanetsMatchingContainer;

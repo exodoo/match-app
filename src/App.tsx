@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { SignUp, PlanetsContainer, GameCompleted } from './pages';
+import { SignUp, PlanetsMatchingContainer, GameCompletedContainer } from './pages';
 
 import { Auth } from './api';
 
@@ -13,8 +13,9 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/app" element={<PlanetsContainer />} />
-        <Route path="/complete" element={<GameCompleted />} />
+        <Route path="/app" element={<PlanetsMatchingContainer />} />
+        <Route path="/complete" element={<GameCompletedContainer />} />
+        <Route path="/planet/:id" element={<SignUp />} />
         <Route path="/" element={<AuthResolver />} />
       </Routes>
     </Router>
