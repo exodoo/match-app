@@ -40,7 +40,6 @@ export class Planets {
     getNotRatedPlanets(planets: Array<{ id: number }>) {
         const ratedPlanets = this.getRatedPlanets();
         return planets.filter((planet) => !ratedPlanets.includes(planet.id));
-
     }
 
     getRatedPlanets() {
@@ -61,5 +60,15 @@ export class Planets {
         ratedPlanets.push(id);
         localStorage.setItem(Planets.RATE_PLANETS_KEY, JSON.stringify(ratedPlanets));
         return Promise.resolve();
+    }
+
+    async likeExoplanet(planetId: string, gamerId: string) {
+        const response = await this.apiClient.post(`/games/tinder/gamers/${gamerId}/exoplanets/${planetId}`, {});
+        return response;
+    }
+
+    async getMatches(gamerId: string) {
+        const response = await this.apiClient.get(`/games/tinder/gamers/${gamerId}/matches`);
+        return response;
     }
 }
