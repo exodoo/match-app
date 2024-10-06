@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
-import { Button } from '@mui/material';
+import { Box, IconButton } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 import { Auth, Planets } from '../../../api';
 import { Header, TabBar, Spinner } from '../../../components';
 import PlanetDetailedCard from '../details/PlanetDetailedCard';
+import './PlanetsMatchingContainer.css';
 
 const planetsService = Planets.getInstance();
 
@@ -64,8 +67,14 @@ const PlanetsMatchingContainer: React.FC = () => {
                 {completed && <Navigate to="/complete" replace />}
                 <div>
                     <PlanetDetailedCard planet={selected} />
-                    <Button onClick={() => handleRatePlanet(selected, 1)}>Like</Button>
-                    <Button onClick={() => handleRatePlanet(selected, -1)}>Dislike</Button>
+                    <Box>
+                        <IconButton onClick={() => handleRatePlanet(selected, -1)} color="error" className="planets-matching-action">
+                            <CloseIcon />
+                        </IconButton>
+                        <IconButton onClick={() => handleRatePlanet(selected, 1)} color="primary" className="planets-matching-action">
+                            <FavoriteIcon />
+                        </IconButton>
+                    </Box>
                 </div>
             </div>
             <TabBar />

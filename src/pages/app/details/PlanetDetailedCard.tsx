@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { PlanetView } from '../../../components/planet-view/PlanetView';
+import { DetailedHeader } from './components';
 
 type PlanetDetailedCardProps = {
   planet: any;
@@ -14,8 +14,7 @@ const PlanetDetailedCard: React.FC<PlanetDetailedCardProps> = ({ planet }) => {
   return (
     <div>
       <div className="card">
-        {planet.name}
-        <PlanetView planetTexture={planet.planet_texture} background={planet.background} />
+        <DetailedHeader planet={planet} />
       </div>
     </div>
   );
