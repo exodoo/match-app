@@ -17,8 +17,6 @@ const PlanetsContainer: React.FC = () => {
     if (!Auth.getInstance().isLoggedIn())
         return <Navigate to="/" replace />;
 
-    const userId = localStorage.getItem('id') || '';
-
     const handleRatePlanet = (planet: any, rating: number) => {
         if (completed || rateSending) return;
         setRateSending(true);
