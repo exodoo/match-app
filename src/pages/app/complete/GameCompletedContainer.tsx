@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 import { Auth, Planets } from "../../../api";
 import { Spinner, Header } from "../../../components";
@@ -7,10 +7,8 @@ import { Timer, Gamers } from "./components";
 import { Matches } from "./components";
 
 import "./GameCompleted.css";
-import { Typography } from "@mui/material";
 
 const GameCompletedContainer: React.FC = () => {
-  const nav = useNavigate();
   const fetchingTimeoutRef = useRef<number | null>(null);
   const [results, setResults] = useState<any[]>([]);
 
@@ -34,9 +32,9 @@ const GameCompletedContainer: React.FC = () => {
 
     useEffect(() => {
         fetchingTimeoutRef.current = setInterval(() => {
-            Planets.getInstance().getMatches(userId)
-                .then((response) => {
-                    const matches = response.matches;
+            Planets.getInstance().getMatches(userId as any)
+                .then((response: any) => {
+                    const matches = response?.matches as any;
                     const res = [];
 
                     for (let i = 0; i < matches.length; i++) {
