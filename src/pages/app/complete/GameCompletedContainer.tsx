@@ -31,17 +31,18 @@ const GameCompletedContainer: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    fetchingTimeoutRef.current = setInterval(() => {
-      // Planets.getInstance().getPlanets()
-      //     .then((planets) => {
-      //         if (planets.length > 0) {
-      //             clearInterval(fetchingTimeoutRef.current!);
-      //         }
-      //     })
-      //     .catch((error) => {
-      //         console.error(error);
-      //     });
-    }, 1000);
+    const planetsService = Planets.getInstance();
+    planetsService
+      .getPlanets()
+      .then((planets) => {
+        setResults(planets);
+        if (planets.length > 0) {
+          nav("/app", { replace: true });
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, []);
 
   return (
