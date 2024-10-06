@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-import { Typography } from "@mui/material";
 
 import { Auth, Planets } from "../../../api";
 import { Spinner, Header } from "../../../components";
-import { Timer, Gamers, Matches } from "./components";
+import { Timer, Gamers } from "./components";
 
 import "./GameCompleted.css";
 
