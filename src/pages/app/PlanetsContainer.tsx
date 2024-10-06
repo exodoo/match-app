@@ -3,6 +3,7 @@ import { Navigate } from 'react-router-dom';
 
 import { Auth, Planets } from '../../api';
 import PlanetDetailedCard from './PlanetDetailedCard';
+import { Avatar } from '../../components/avatar/Avatar';
 
 const planetsService = Planets.getInstance();
 
@@ -14,6 +15,8 @@ const PlanetsContainer: React.FC = () => {
 
     if (!Auth.getInstance().isLoggedIn())
         return <Navigate to="/" replace />;
+
+    const userId = localStorage.getItem('id') || '';
 
     const handleRatePlanet = (planet: any, rating: number) => {
         if (completed || rateSending) return;
