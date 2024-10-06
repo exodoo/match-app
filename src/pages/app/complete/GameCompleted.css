@@ -10,7 +10,7 @@
     flex: 1 0 0;
     align-self: stretch;
 
-    font-family: Roboto !important;
+    font-family: "Roboto", sans-serif;
 }
 
 .greetings-text {
@@ -65,7 +65,7 @@ h5 {
         "clig" off;
 
     /* typography/h5 */
-    font-family: Roboto;
+    font-family: "Roboto", sans-serif;
     font-size: 1.5rem;
     font-style: normal;
     font-weight: 400;
@@ -76,4 +76,5 @@ h5 {
 
 h4 {
     margin: 0;
+    font-family: "Roboto", sans-serif;
 }

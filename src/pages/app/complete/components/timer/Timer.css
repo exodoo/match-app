@@ -5,7 +5,7 @@
         "clig" off;
 
     /* typography/h1 */
-    font-family: Roboto;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     font-size: 6rem;
     font-style: normal;
     font-weight: 300;

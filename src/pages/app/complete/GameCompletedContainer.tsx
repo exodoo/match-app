@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-import { Button } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 
 import { Auth, Planets } from "../../../api";
 import { Spinner, Header } from "../../../components";
@@ -67,11 +67,26 @@ const GameCompletedContainer: React.FC = () => {
       {results.length < MAX_EXPLORERS ? (
         <div className="game-content-container">
           <div className="greetings-text">
-            <h4>Great!</h4>
-            <div className="body-text">
+            <Typography
+              variant="h4"
+              sx={{
+                color: "#FF9800",
+                marginBottom: "1rem",
+              }}
+            >
+              Great!
+            </Typography>
+
+            <Typography
+              variant="body2"
+              sx={{
+                textAlign: "center",
+                color: "rgba(255, 255, 255, 0.7)",
+              }}
+            >
               You have just chosen {MAX_EXPLORERS} exoplanets you like and ready
               to start. Now you have to wait for match with other 5 astronauts
-            </div>
+            </Typography>
           </div>
 
           <div className="timer-container">
