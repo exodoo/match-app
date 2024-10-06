@@ -1,0 +1,40 @@
+.planets-matching-header {
+    position: relative;
+}
+
+.planets-matching-action-container {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: -38px;
+    width: 95%;
+    padding-left: 10px;
+}
+
+.planets-matching-action {
+    border-radius: 100px;
+    padding: 12px;
+    height: 72px;
+    width: 72px;
+    background-color: #fff !important;
+    box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 6px 10px 0px rgba(0, 0, 0, 0.14);
+    box-shadow: 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+}
+
+.planets-matching-details {
+    margin: 3rem 1rem;
+    
+}
+
+.planets-matching-details-pair {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(33, 150, 243, 0.5);
+    padding: 0.5rem 0;
+}
+
+.planets-matching-details-description {
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+}

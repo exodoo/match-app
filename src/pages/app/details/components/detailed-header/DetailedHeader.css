@@ -1,0 +1,12 @@
+.detailed-header {
+    position: relative;
+}
+
+.detailed-header-meta {
+    position: absolute;
+    bottom: 0;
+    gap: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    margin: 2rem 1rem;
+}
