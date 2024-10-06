@@ -5,6 +5,8 @@ import { Auth, Planets } from '../../../api';
 import { Spinner, Header } from '../../../components';
 import { Timer, Gamers } from './components';
 
+import './GameCompleted.css';
+
 const GameCompletedContainer: React.FC = () => {
     const nav = useNavigate();
     const fetchingTimeoutRef = useRef<number | null>(null);
@@ -41,7 +43,7 @@ const GameCompletedContainer: React.FC = () => {
         }, 1000);
     }, []);
 
-    return (<div>
+    return (<div className="game-completed">
         <Header />
         Game completed!
 
