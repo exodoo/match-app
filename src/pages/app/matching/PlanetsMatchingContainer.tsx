@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
-import { Box, IconButton } from '@mui/material';
+import { Box, IconButton, Typography } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
@@ -14,7 +14,7 @@ const planetsService = Planets.getInstance();
 const PlanetsMatchingContainer: React.FC = () => {
     const [completed, setCompleted] = useState(false);
     const [planets, setPlanets] = useState<any[]>([]);
-    const [selected, setSelected] = useState<unknown | null>(null);
+    const [selected, setSelected] = useState<any | null>(null);
     const [loading, setLoading] = useState(true);
     const [rateSending, setRateSending] = useState(false);
 
@@ -59,27 +59,68 @@ const PlanetsMatchingContainer: React.FC = () => {
             });
     }, []);
 
-    return (
-        <div>
+    return (<>
+        {loading && <Spinner />}
+        {completed && <Navigate to="/complete" replace />}
+        <Box>
             <Header />
-            <div className="card">
-                {loading && <Spinner />}
-                {completed && <Navigate to="/complete" replace />}
-                <div>
+            <Box className="card">
+                <Box className="planets-matching-header">
                     <PlanetDetailedCard planet={selected} />
-                    <Box>
+                    <Box className="planets-matching-action-container">
                         <IconButton onClick={() => handleRatePlanet(selected, -1)} color="error" className="planets-matching-action">
                             <CloseIcon />
                         </IconButton>
-                        <IconButton onClick={() => handleRatePlanet(selected, 1)} color="primary" className="planets-matching-action">
+                        <IconButton onClick={() => handleRatePlanet(selected, 1)} color="success" className="planets-matching-action">
                             <FavoriteIcon />
                         </IconButton>
                     </Box>
-                </div>
-            </div>
+                </Box>
+                <Box className="planets-matching-details">
+                    <Typography variant="h6" gutterBottom fontWeight={400}>Planet Details</Typography>
+                    <Box className="planets-matching-details-pair">
+                        <Typography variant="body1" color="textDisabled" >
+                            Discovery method
+                        </Typography>
+                        <Typography variant="body1">{selected?.discovered_method || '-'}</Typography>
+                    </Box>
+                    <Box className="planets-matching-details-pair">
+                        <Typography variant="body1" color="textDisabled" >
+                            Type
+                        </Typography>
+                        <Typography variant="body1">{selected?.type || '-'}</Typography>
+                    </Box>
+                    <Box className="planets-matching-details-description">
+                        <Typography>
+                            {selected?.description || '-'}
+                        </Typography>
+                    </Box>
+                </Box>
+                <Box className="planets-matching-details">
+                    <Typography variant="h6" gutterBottom fontWeight={400}>Host Star</Typography>
+                    <Box className="planets-matching-details-pair">
+                        <Typography variant="body1" color="textDisabled" >
+                            Star name
+                        </Typography>
+                        <Typography variant="body1">{selected?.star?.name || '-'}</Typography>
+                    </Box>
+                    <Box className="planets-matching-details-pair">
+                        <Typography variant="body1" color="textDisabled" >
+                            Star mass
+                        </Typography>
+                        <Typography variant="body1">{selected?.star?.mass || '-'}</Typography>
+                    </Box>
+                    <Box className="planets-matching-details-pair">
+                        <Typography variant="body1" color="textDisabled" >
+                            Star radius
+                        </Typography>
+                        <Typography variant="body1">{selected?.star?.radius ? `${selected?.star?.radius} RSun` : '-'}</Typography>
+                    </Box>
+                </Box>
+            </Box>
             <TabBar />
-        </div>
-    );
+        </Box>
+    </>);
 };
 
 export default PlanetsMatchingContainer;
