@@ -4,6 +4,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { Auth, Planets } from "../../../api";
 import { Spinner, Header } from "../../../components";
 import { Timer, Gamers } from "./components";
+import { Matches } from "./components";
 
 import "./GameCompleted.css";
 import { Typography } from "@mui/material";
@@ -72,8 +73,11 @@ const GameCompletedContainer: React.FC = () => {
     
             <Spinner />
           </div>
-          Game completed!
-          {results.length >= 3 ? <Gamers list={results}/> : null}
+          
+          {results.length >= 3 ? <>Game completed!<Gamers list={results}/></>  : null}
+
+          {results.length < 3 ? <>Matches: <Matches matchesCount={results.length} /></> : null}
+          
         </div>
       );
 };
