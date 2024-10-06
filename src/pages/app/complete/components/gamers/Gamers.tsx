@@ -1,6 +1,8 @@
 import React from 'react';
+import { Typography } from '@mui/material';
 
 import './Gamers.css';
+import { Avatar } from '../../../../../components';
 
 type GamersProps = {
     list: Array<any>;
@@ -8,20 +10,20 @@ type GamersProps = {
 
 const Gamers: React.FC<GamersProps> = ({ list }) => {
     return (
-        <div>
-            <div className="gamers">
-                {list.map((gamer) => (
-                    <GamerItem item={gamer} key={gamer?.id} />
-                ))}
-            </div>
+        <div className="gamers">
+            {list.map((gamer) => (
+                <GamerItem item={gamer} key={gamer?.id} />
+            ))}
         </div>
     );
 };
 
 const GamerItem: React.FC<{ item: any }> = ({ item }) => <div>
-    <div className="gamer">
-        <div className="gamer-name">{item.name}</div>
-        <div className="gamer-score">{item.score}</div>
+    <div className="gamer-item">
+        <div className="gamer-avatar">
+            <Avatar userId={item.id} alt={item.name} />
+        </div>
+        <Typography variant="h6">{item.name} {item.id}</Typography>
     </div>
 </div>
 

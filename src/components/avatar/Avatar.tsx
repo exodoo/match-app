@@ -16,5 +16,5 @@ export const Avatar: React.FC<AvatarProps> = ({ userId, alt }) => {
         setAvatarSrc(avatarPath);
     }, [userId]);
 
-    return <img src={avatarSrc} alt={alt} />;
+    return <img src={avatarSrc} alt={alt} className="avatar" />;
 };

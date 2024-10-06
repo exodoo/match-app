@@ -68,10 +68,10 @@ const PlanetsMatchingContainer: React.FC = () => {
                 <Box className="planets-matching-header">
                     <PlanetDetailedCard planet={selected} />
                     <Box className="planets-matching-action-container">
-                        <IconButton onClick={() => handleRatePlanet(selected, -1)} color="error" className="planets-matching-action">
+                        <IconButton disabled={rateSending} onClick={() => handleRatePlanet(selected, -1)} color="error" className="planets-matching-action">
                             <CloseIcon />
                         </IconButton>
-                        <IconButton onClick={() => handleRatePlanet(selected, 1)} color="success" className="planets-matching-action">
+                        <IconButton disabled={rateSending} onClick={() => handleRatePlanet(selected, 1)} color="success" className="planets-matching-action">
                             <FavoriteIcon />
                         </IconButton>
                     </Box>
