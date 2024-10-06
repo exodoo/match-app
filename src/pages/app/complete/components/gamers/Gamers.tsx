@@ -10,7 +10,7 @@ const Gamers: React.FC<GamersProps> = ({ list }) => {
     return (
         <div>
             <div className="gamers">
-                {list.map((gamer, index) => (
+                {list.map((gamer) => (
                     <GamerItem item={gamer} key={gamer?.id} />
                 ))}
             </div>

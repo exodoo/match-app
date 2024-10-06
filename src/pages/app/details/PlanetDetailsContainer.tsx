@@ -9,6 +9,7 @@ const PlanetDetailsContainer: React.FC = () => {
 
     useEffect(() => {
         console.log('PlanetDetailsContainer', id);
+        setPlanet({ name: 'Earth', planet_texture: 'earth', background: 'blue' });
     }, [id]);
 
     return <PlanetDetailedCard planet={planet} />;

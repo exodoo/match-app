@@ -3,7 +3,7 @@ import React from 'react';
 import { PlanetView } from '../../../components/planet-view/PlanetView';
 
 type PlanetDetailedCardProps = {
-  planet: unknown;
+  planet: any;
 };
 
 const PlanetDetailedCard: React.FC<PlanetDetailedCardProps> = ({ planet }) => {

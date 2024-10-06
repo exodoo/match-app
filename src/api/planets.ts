@@ -56,6 +56,8 @@ export class Planets {
     }
 
     async ratePlanet(id: string, rating: number) {
+        console.log('Rating planet', id, rating);
+        
         const ratedPlanets = this.getRatedPlanets();
         ratedPlanets.push(id);
         localStorage.setItem(Planets.RATE_PLANETS_KEY, JSON.stringify(ratedPlanets));

@@ -12,6 +12,9 @@ const GameCompletedContainer: React.FC = () => {
     const fetchingTimeoutRef = useRef<number | null>(null);
     const [results, setResults] = useState<any[]>([]);
 
+    console.log('GameCompletedContainer', results);
+    
+
     if (!Auth.getInstance().isLoggedIn())
         return <Navigate to="/" replace />;
 
