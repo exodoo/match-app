@@ -9,6 +9,7 @@ const planetsService = Planets.getInstance();
 
 const PlanetsContainer: React.FC = () => {
     const [completed, setCompleted] = useState(false);
+    const [planets, setPlanets] = useState<any[]>([]);
     const [selected, setSelected] = useState<unknown | null>(null);
     const [loading, setLoading] = useState(true);
     const [rateSending, setRateSending] = useState(false);
@@ -23,7 +24,7 @@ const PlanetsContainer: React.FC = () => {
         setRateSending(true);
         planetsService.ratePlanet(planet.id, rating)
             .then(() => {
-                return planetsService.getPlanets();
+                return planetsService.getNotRatedPlanets(planets);
             })
             .then((planets) => {
                 planets.length === 0 && !!selected
@@ -41,6 +42,11 @@ const PlanetsContainer: React.FC = () => {
     useEffect(() => {
         planetsService.getPlanets()
             .then((planets) => {
+                if (planets.length === 0 && planetsService.isAnyPlanetRated) {
+                    return setCompleted(true);
+                }
+                
+                setPlanets(planets);
                 setSelected(planets[0]);
             })
             .catch((error) => {
@@ -55,11 +61,8 @@ const PlanetsContainer: React.FC = () => {
         <div>
             <div className="card">
                 {loading && <p>Loading...</p>}
+                {completed && <Navigate to="/complete" replace />}
                 <PlanetDetailedCard planet={selected} onRate={handleRatePlanet} />
-            </div>
-            <div className="avatar-container">
-                <h3>User Avatar:</h3>
-                <Avatar userId={userId} alt="Test User Avatar" />
             </div>
         </div>
     );

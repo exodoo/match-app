@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { SignUp, PlanetsContainer } from './pages';
+import { SignUp, PlanetsContainer, GameCompleted } from './pages';
 
 import { Auth } from './api';
 
@@ -14,6 +14,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/app" element={<PlanetsContainer />} />
+        <Route path="/complete" element={<GameCompleted />} />
         <Route path="/" element={<AuthResolver />} />
       </Routes>
     </Router>

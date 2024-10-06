@@ -16,6 +16,10 @@ export class Planets {
         this.apiClient = ApiClientService.getInstance();
     }
 
+    get isAnyPlanetRated() {
+        return this.getRatedPlanets().length > 0;
+    }
+
     static getInstance() {
         if (!Planets._instance) {
             Planets._instance = new Planets();
@@ -25,13 +29,18 @@ export class Planets {
 
     async getPlanets() {
         const { items } = await this.apiClient.get<PlanetListResponse>('/exoplanets', {}, true);
-        const ratedPlanets = this.getRatedPlanets();
-        return items.filter((planet) => !ratedPlanets.includes(planet.id));
+        return this.getNotRatedPlanets(items);
     }
 
     async getPlanet(id: string) {
         const response = await this.apiClient.get(`/exoplanets/${id}`, {}, true);
         return response;
+    }
+
+    getNotRatedPlanets(planets: Array<{ id: number }>) {
+        const ratedPlanets = this.getRatedPlanets();
+        return planets.filter((planet) => !ratedPlanets.includes(planet.id));
+
     }
 
     getRatedPlanets() {
