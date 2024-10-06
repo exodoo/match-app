@@ -15,7 +15,7 @@ export const PlanetView: React.FC<PlanetViewProps> = ({ planetTexture, backgroun
     useEffect(() => {
         const params = new URLSearchParams();
         params.append('texture', planetTexture);
-        params.append('background', background || '');
+        params.append('background', '');
         const iframeUrl = `${apiUrl}?${params.toString()}`;
         setPlanetUrl(iframeUrl);
     }, [planetTexture, background]);
