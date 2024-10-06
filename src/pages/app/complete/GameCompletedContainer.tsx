@@ -47,7 +47,7 @@ const GameCompletedContainer: React.FC = () => {
     }, []);
 
     return (<div className="game-completed">
-        <Header />
+        <Header theme="dark" />
         Game completed!
 
         <Timer duration={300000} />
