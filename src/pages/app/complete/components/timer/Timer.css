@@ -1,0 +1,14 @@
+.timer {
+    color: var(--primary-contrast, #fff);
+    font-feature-settings:
+        "liga" off,
+        "clig" off;
+
+    /* typography/h1 */
+    font-family: Roboto;
+    font-size: 6rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 116.7%; /* 7.002rem */
+    letter-spacing: -0.09375rem;
+}
