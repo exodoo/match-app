@@ -116,6 +116,18 @@ const PlanetsMatchingContainer: React.FC = () => {
                         </Typography>
                         <Typography variant="body1">{selected?.star?.radius ? `${selected?.star?.radius} RSun` : '-'}</Typography>
                     </Box>
+                    <Box className="planets-matching-details-pair">
+                        <Typography variant="body1" color="textDisabled" >
+                            Star temperature
+                        </Typography>
+                        <Typography variant="body1">{selected?.star?.temperature ? `${selected?.star?.temperature}K` : '-'}</Typography>
+                    </Box>
+                    <Box className="planets-matching-details-pair">
+                        <Typography variant="body1" color="textDisabled" >
+                            Star age
+                        </Typography>
+                        <Typography variant="body1">{selected?.star?.age ? `${selected?.star?.age}b` : '-'}</Typography>
+                    </Box>
                 </Box>
             </Box>
             <TabBar />
