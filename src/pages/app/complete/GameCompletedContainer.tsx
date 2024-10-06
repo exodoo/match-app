@@ -50,7 +50,7 @@ const GameCompletedContainer: React.FC = () => {
         <Header />
         Game completed!
 
-        <Timer time={3000} />
+        <Timer duration={300000} />
 
         <Gamers list={[{ name: 'Some Name' }]}/>
 
