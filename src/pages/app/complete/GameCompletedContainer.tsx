@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 
-import { Auth, Planets } from '../../api';
-import { Spinner, Header } from '../../components';
+import { Auth, Planets } from '../../../api';
+import { Spinner, Header } from '../../../components';
+import { Timer, Gamers } from './components';
 
 const GameCompletedContainer: React.FC = () => {
     const nav = useNavigate();
@@ -43,6 +44,10 @@ const GameCompletedContainer: React.FC = () => {
     return (<div>
         <Header />
         Game completed!
+
+        <Timer time={3000} />
+
+        <Gamers list={[{ name: 'Some Name' }]}/>
 
         <Spinner />
     </div>);

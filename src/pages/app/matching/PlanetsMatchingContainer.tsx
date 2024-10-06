@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 import { Button } from '@mui/material';
 
-import { Auth, Planets } from '../../api';
-import { Header, TabBar, Spinner } from '../../components';
-import PlanetDetailedCard from './PlanetDetailedCard';
+import { Auth, Planets } from '../../../api';
+import { Header, TabBar, Spinner } from '../../../components';
+import PlanetDetailedCard from '../details/PlanetDetailedCard';
 
 const planetsService = Planets.getInstance();
 
@@ -64,8 +64,8 @@ const PlanetsMatchingContainer: React.FC = () => {
                 {completed && <Navigate to="/complete" replace />}
                 <div>
                     <PlanetDetailedCard planet={selected} />
-                    <Button>Like</Button>
-                    <Button>Dislike</Button>
+                    <Button onClick={() => handleRatePlanet(selected, 1)}>Like</Button>
+                    <Button onClick={() => handleRatePlanet(selected, -1)}>Dislike</Button>
                 </div>
             </div>
             <TabBar />

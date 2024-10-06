@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { PlanetView } from '../../components/planet-view/PlanetView';
+import { PlanetView } from '../../../components/planet-view/PlanetView';
 
 type PlanetDetailedCardProps = {
   planet: unknown;
