@@ -78,4 +78,8 @@ export class Planets {
         const response = await this.apiClient.get(`/games/tinder/gamers/${gamerId}/matches`);
         return response;
     }
+
+    clearRatedPlanets() {
+        localStorage.removeItem(Planets.RATE_PLANETS_KEY);
+    }
 }

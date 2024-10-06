@@ -1,13 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
+import { Button } from "@mui/material";
 
 import { Auth, Planets } from "../../../api";
 import { Spinner, Header } from "../../../components";
 import { Timer, Gamers } from "./components";
 
 import "./GameCompleted.css";
+// import PlanetDetailedCard from "../details/PlanetDetailedCard";
 
 const MAX_EXPLORERS = 5;
+
+const planetsService = Planets.getInstance();
 
 const GameCompletedContainer: React.FC = () => {
     const nav = useNavigate();
@@ -16,8 +20,12 @@ const GameCompletedContainer: React.FC = () => {
 
     if (!Auth.getInstance().isLoggedIn()) return <Navigate to="/" replace />;
 
+    const handleMatchAgain = () => {
+        Auth.getInstance().logout();
+        nav("/", { replace: true });
+    };
+
     useEffect(() => {
-        const planetsService = Planets.getInstance();
         planetsService
             .getPlanets()
             .then((planets) => {
@@ -81,6 +89,11 @@ const GameCompletedContainer: React.FC = () => {
                         Say “Hola” to your teammates-colonists:
                     </div>
                     <Gamers list={results.slice(0, MAX_EXPLORERS)} />
+
+                    {/* <h4>Destination:</h4>
+                    <PlanetDetailedCard /> */}
+
+                    <Button onClick={handleMatchAgain} variant="outlined" fullWidth>Match again</Button>
                 </div>
                 : null}
         </div>

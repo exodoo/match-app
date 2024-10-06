@@ -23,7 +23,7 @@ const GamerItem: React.FC<{ item: any }> = ({ item }) => <div>
         <div className="gamer-avatar">
             <Avatar userId={item.id} alt={item.name} />
         </div>
-        <Typography variant="h6">{item.name} {item.id}</Typography>
+        <Typography variant="h6">{item.name}</Typography>
     </div>
 </div>
 

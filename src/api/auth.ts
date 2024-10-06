@@ -1,8 +1,11 @@
 import { ApiClientService } from "../service";
+import { Planets } from "./planets";
 
 export class Auth {
     private static _instance: Auth;
     private apiClient: ApiClientService;
+
+    private static readonly _authKey = 'id';
     
     private constructor() {
         this.apiClient = ApiClientService.getInstance();
@@ -20,15 +23,16 @@ export class Auth {
             name: name,
             username: name
         }, true);
-        localStorage.setItem('id', response.id);
+        localStorage.setItem(Auth._authKey, response.id);
         return Promise.resolve(response);
     }
     
     async logout() {
-        localStorage.removeItem('id');
+        localStorage.removeItem(Auth._authKey);
+        Planets.getInstance().clearRatedPlanets();
     }
     
     isLoggedIn() {
-        return !!localStorage.getItem('id');
+        return !!localStorage.getItem(Auth._authKey);
     }
 }
