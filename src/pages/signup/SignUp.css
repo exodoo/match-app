@@ -1,0 +1,21 @@
+.sign-up-page {
+  background: linear-gradient(0deg, #030f1e, #01214a);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign-up-content {
+  @media (width <= 844px) {
+    height: 100%;
+  }
+  max-height: 844px;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5rem 3rem;
+}
