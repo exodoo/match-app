@@ -1,2 +1,2 @@
-export { default as PlanetCard } from './PlanetCard';
+export { PlanetsContainer } from './app';
 export { default as SignUp } from './signup/SignUp';

@@ -21,13 +21,14 @@ export class Auth {
             username: name
         }, true);
         localStorage.setItem('id', response.id);
+        return Promise.resolve(response);
     }
     
     async logout() {
         localStorage.removeItem('id');
     }
     
-    async isLoggedIn() {
+    isLoggedIn() {
         return !!localStorage.getItem('id');
     }
 }

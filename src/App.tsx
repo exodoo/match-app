@@ -1,20 +1,20 @@
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import { SignUp, PlanetCard } from './pages';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { SignUp, PlanetsContainer } from './pages';
 
-import { Planets } from './api/planets';
+import { Auth } from './api';
+
+const AuthResolver = () => {
+  if (!Auth.getInstance().isLoggedIn())
+    return <SignUp />;
+  return <Navigate to="/app" replace />;
+};
 
 function App() {
-  // Get planets
-  const planets = Planets.getInstance();
-  planets.getPlanet("1").then((response) => {
-    console.log(response);
-  });
-
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<PlanetCard />} />
-        <Route path="/signup" element={<SignUp />} />
+        <Route path="/app" element={<PlanetsContainer />} />
+        <Route path="/" element={<AuthResolver />} />
       </Routes>
     </Router>
   );

@@ -1,12 +1,19 @@
 import React, { useState } from 'react';
+import { redirect, useNavigate } from 'react-router-dom';
 import { TextField, Button, Box, Typography, ThemeProvider, createTheme } from '@mui/material';
 
 import Logo from '../../assets/logo.svg';
+import { Auth } from '../../api';
 import './SignUp.css';
 
 const SignUp: React.FC = () => {
+  const nav = useNavigate();
   const [nickname, setNickname] = useState('');
   const [error, setError] = useState('');
+
+  if (Auth.getInstance().isLoggedIn()) {
+    redirect('/app');
+  }
 
   const handleNicknameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setError('');
@@ -14,7 +21,19 @@ const SignUp: React.FC = () => {
   };
 
   const handleStart = () => {
-    // TODO: insert service logic here
+    Auth.getInstance().signUp(nickname)
+      .then(() => {
+        nav('/app');
+      })
+      .catch(() => {
+        setError('Nickname is already taken');
+      });
+  };
+
+  const handleEnter = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      handleStart();
+    }
   };
 
   return (
@@ -39,9 +58,17 @@ const SignUp: React.FC = () => {
             }}>
               Welcome to EXODOO game! Let’s plan exoplanet colonisation. Choose planets you like and see what matches do you have with other astronauts
             </Typography>
-            <TextField label="Nickname" onChange={handleNicknameChange} value={nickname} fullWidth error={!!error} helperText={error} />
+            <TextField
+              label="Nickname"
+              onChange={handleNicknameChange}
+              value={nickname}
+              fullWidth
+              error={!!error}
+              helperText={error}
+              onKeyDown={handleEnter}
+            />
           </Box>
-          <Button disabled={!nickname || !!error} onClick={handleStart} color="warning" variant="contained" size="large" fullWidth>Start</Button>
+          <Button disabled={!nickname || nickname.length < 3 || !!error} onClick={handleStart} color="warning" variant="contained" size="large" fullWidth>Start</Button>
         </Box>
       </Box>
     </ThemeProvider>
