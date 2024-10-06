@@ -1,10 +1,7 @@
-import React from 'react';
+import React from "react";
 
-import './Spinner.css';
+import "./Spinner.css";
 
 export const Spinner: React.FC = () => {
-    return (
-        <div className="spinner">
-        </div>
-    );
+  return <div className="spinner-matching"></div>;
 };

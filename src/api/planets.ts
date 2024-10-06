@@ -61,6 +61,11 @@ export class Planets {
         const ratedPlanets = this.getRatedPlanets();
         ratedPlanets.push(id);
         localStorage.setItem(Planets.RATE_PLANETS_KEY, JSON.stringify(ratedPlanets));
+
+        if (rating > 0) {
+            await this.likeExoplanet(id, localStorage.getItem('id') || '');
+        }
+
         return Promise.resolve();
     }
 
